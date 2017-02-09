@@ -5,15 +5,16 @@ require 'timecop'
 require_relative 'schedule_fetcher'
 require_relative 'time_slot'
 
+# TIMECOP
 t = Time.local(2017, 2, 9, 18, 56, 0)
-  Timecop.travel(t)
+Timecop.travel(t)
+# TIMECOP
 
 
-binding.pry
 next_change = TimeSlot.find_next_change(ScheduleFetcher.fetch)
 
 exit if next_change.nil?
 
 
 
-puts 'asd'
+puts next_change

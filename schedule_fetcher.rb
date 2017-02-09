@@ -8,12 +8,15 @@ class ScheduleFetcher
   end
 
   def fetch
-    csv = fetch_from_web
+    csv = nil
+    begin
+      csv = Net::HTTP.get(URL)
+      File.write('local_schedule_backup', csv)
+    rescue SocketError
+    binding.pry
+      csv = File.read('local_schedule_backup')
+    end
     strip_headers csv
-  end
-
-  def fetch_from_web
-    Net::HTTP.get(URL)
   end
 
   def strip_headers(raw_string)
@@ -23,6 +26,4 @@ class ScheduleFetcher
     end
     raw_string
   end
-
-
 end
