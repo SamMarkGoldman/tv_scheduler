@@ -1,13 +1,19 @@
 # https://docs.google.com/spreadsheets/d/1lOzuYOb8mHNnMuv2Gdmipx3k24e2yLSyIX2u4lDj5Vg/pub?gid=0&single=true&output=csv
 
-require 'net/http'
 require 'pry'
-require_relative 'schedule'
+require 'timecop'
+require_relative 'schedule_fetcher'
 require_relative 'time_slot'
 
-uri = URI('https://docs.google.com/spreadsheets/d/1lOzuYOb8mHNnMuv2Gdmipx3k24e2yLSyIX2u4lDj5Vg/pub?gid=0&single=true&output=csv')
-string = 
+t = Time.local(2017, 2, 9, 18, 56, 0)
+  Timecop.travel(t)
 
-schedule = Schedule.new(Net::HTTP.get(uri))
+
+binding.pry
+next_change = TimeSlot.find_next_change(ScheduleFetcher.fetch)
+
+exit if next_change.nil?
+
+
 
 puts 'asd'
