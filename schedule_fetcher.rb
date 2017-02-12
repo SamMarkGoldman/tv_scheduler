@@ -13,7 +13,7 @@ class ScheduleFetcher
       csv = Net::HTTP.get(URL)
       File.write(AppConfig::BACKUP_FILE_NAME, csv)
     rescue SocketError
-    binding.pry
+      Logger.info "Problem getting network schedule. Reading from local backup file."
       csv = File.read(AppConfig::BACKUP_FILE_NAME)
     end
     strip_headers csv
