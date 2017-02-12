@@ -14,7 +14,7 @@ class TimeSlot
   end
 
   def initialize(slot_arr)
-    @time = Time.parse(slot_arr[0])
+    @time = Time.parse(slot_arr[0] || "12:00 AM")
     @channel = slot_arr[1]
     @note = slot_arr[2]
   end

@@ -6,8 +6,8 @@ require_relative 'time_slot'
 require_relative 'remote'
 
 # TIMECOP
-t = Time.local(2017, 2, 7, 12, 59, 57)
-Timecop.travel(t)
+# t = Time.local(2017, 2, 7, 12, 59, 57)
+# Timecop.travel(t)
 # TIMECOP
 
 next_change = TimeSlot.find_next_change(ScheduleFetcher.fetch)
