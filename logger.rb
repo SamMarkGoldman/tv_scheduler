@@ -1,4 +1,4 @@
-require 'logger'
+require 'syslog/logger'
 
 class Logger
   def self.info message
@@ -6,6 +6,6 @@ class Logger
   end
 
   def self.logger
-    @@logger ||= Logger.new('log')
+    @@logger ||= Syslog::Logger.new 'tv_scheduler'
   end
 end
