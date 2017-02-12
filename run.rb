@@ -3,6 +3,7 @@ require 'timecop'
 require_relative 'config'
 require_relative 'schedule_fetcher'
 require_relative 'time_slot'
+require_relative 'remote'
 
 # TIMECOP
 t = Time.local(2017, 2, 7, 12, 59, 57)

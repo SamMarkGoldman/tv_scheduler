@@ -24,8 +24,6 @@ class TimeSlot
   end
 
   def execute
-    channel.each_char do |c|
-      puts c
-    end
+    Remote.channel @channel
   end
 end
