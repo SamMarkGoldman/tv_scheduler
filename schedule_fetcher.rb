@@ -1,7 +1,7 @@
 require 'net/http'
 
 class ScheduleFetcher
-  URL = URI(Config::SCHEDULE_URL)
+  URL = URI(AppConfig::SCHEDULE_URL)
   
   def self.fetch
     new.fetch
@@ -11,10 +11,10 @@ class ScheduleFetcher
     csv = nil
     begin
       csv = Net::HTTP.get(URL)
-      File.write(Config::BACKUP_FILE_NAME, csv)
+      File.write(AppConfig::BACKUP_FILE_NAME, csv)
     rescue SocketError
     binding.pry
-      csv = File.read(Config::BACKUP_FILE_NAME)
+      csv = File.read(AppConfig::BACKUP_FILE_NAME)
     end
     strip_headers csv
   end

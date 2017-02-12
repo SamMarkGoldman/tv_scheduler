@@ -10,7 +10,7 @@ class TimeSlot
     now = Time.now
 
     CSV.parse(csv_string) { |row| all_slots << TimeSlot.new(row[day*3,3]) }
-    all_slots.find { |s| s.time - now > 0 && s.time - now <= Config::RUN_INTERVAL }
+    all_slots.find { |s| s.time - now > 0 && s.time - now <= AppConfig::RUN_INTERVAL }
   end
 
   def initialize(slot_arr)

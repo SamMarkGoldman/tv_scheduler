@@ -1,6 +1,6 @@
 require 'pry'
 require 'timecop'
-require_relative 'config'
+require_relative 'app_config'
 require_relative 'schedule_fetcher'
 require_relative 'time_slot'
 require_relative 'remote'
