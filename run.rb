@@ -1,5 +1,6 @@
 require 'pry'
 require 'timecop'
+require_relative 'logger'
 require_relative 'app_config'
 require_relative 'schedule_fetcher'
 require_relative 'time_slot'
@@ -12,10 +13,8 @@ require_relative 'remote'
 
 next_change = TimeSlot.find_next_change(ScheduleFetcher.fetch)
 
+Logger.info "Scheduled #{next_change}"
 exit if next_change.nil?
-
 
 sleep next_change.time_until
 next_change.execute
-
-puts next_change

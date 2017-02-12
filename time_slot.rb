@@ -26,4 +26,8 @@ class TimeSlot
   def execute
     Remote.channel @channel
   end
+
+  def to_s
+    "#{time}: #{channel} - #{note}"
+  end
 end
